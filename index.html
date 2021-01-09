@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <i class="fas fa-pencil-alt" style="margin-right:10px"></i>Quiz
+        </div>
+    </header>
+    <main>
+        <div class="main">
+            <section class="testing-section">
+                <section class="question-navigation">
+                    <div class="questions"><p>Jump to different question:</p></div>
+                </section>
+                <section class="question-section">
+                    <div class="question"></div>
+                </section>
+                <section class="choices-section">
+                    <div class="choices"></div>
+                </section>
+                <section class="previous-next-section">
+                    <div class="previous-next">
+                        <button onClick="changeQuestion(-1)"><</button>
+                        <button onClick="changeQuestion(1)">></button>
+                    </div>
+                </section>
+                <hr>
+                <section class="grade-button-section">
+                    <div class="container">
+                        Click to grade quiz: 
+                        <button class = "grade-button">Finish</button>
+                    </div>
+                </section>
+            </section class="testing-section">
+            <section class="grade-section">
+                <div class="grade container">
+                    Grade
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+
+    <script src="quiz.js"></script>
+</body>
+</html>

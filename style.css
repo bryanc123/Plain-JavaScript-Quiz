@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+    --bg-primary: black;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+main {
+    min-height: 1vh;
+    line-height: 1em;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Header */
+
+nav a {
+    padding: 10px;
+}
+
+header {
+    color: white;
+    background-color: var(--bg-primary);
+}
+
+.header {
+    font-size: 32px;
+    padding: 20px;
+    max-width: 1100px;
+}
+
+nav a {
+    border-bottom: 2px solid transparent;
+}
+
+nav a:hover {
+    border-bottom: 2px solid #2A9DF4;
+    color: #2A9DF4;
+}
+
+/* Question Navigation */
+
+.question-navigation {
+    padding: 20px;
+}
+
+.question-navigation button {
+    padding: 5px 20px;
+    background-color: white;
+    border: 1px solid black;
+    border-bottom: 4px solid blue;
+}
+
+.question-navigation .selected {
+    background-color: orange;;
+}
+
+.question-navigation button:hover {
+    border-bottom: 4px solid orange;
+}
+
+/* Question Section */
+
+.question {
+    padding: 20px;
+    margin: 20px 0;
+    font-size: 24px;
+    line-height: 1em;
+    background-color: #EBECF0;
+}
+
+/* Choices Section */
+
+.choices {
+    padding: 20px 40px;
+    font-size: 20px;
+    height: 180px;
+}
+
+/* Previous and Next Buttons */
+
+.previous-next-section button {
+    padding: 10px 40px;
+    background-color: orange;
+}
+
+.previous-next {
+    padding: 20px;
+}
+
+/* Grade Button */
+
+.grade-button-section button {
+    background-color: #EBECF0;
+    border-radius: 20px;
+    font-size: 24px;
+    padding: 15px;
+}
+
+/* Grading Section */
+
+.grade-section {
+    display: none;
+}
+
+button {
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.container {
+    max-width: 1100px;
+    height: 100%;
+    padding: 20px;
+}
+
+.home h1 {
+    font-size: 36px;
+}
+
+footer {
+    font-size: 14px;
+    left: 0;
+    bottom: 0; 
+    width: 100%;
+    background-color: var(--bg-primary);
+    color: white;
+    padding: 20px;
+}
+
+footer li {
+    list-style-type: none;
+}
+
+li {
+    margin: 0px 0px 8px 0px;
+}
+
+/* Other */
+
+p {
+    margin-bottom: 20px;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.md {
+    font-size: 16px;
+    text-decoration: underline;
+}

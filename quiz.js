@@ -1,0 +1,173 @@
+const questions = [
+    {
+        text: "8 % 3 =",
+        choices: [
+            "2",
+            "3",
+            "4",
+            "6"
+        ],
+        answer: "2",
+        chosen: "",
+        hint: "Remainder"
+    },
+    {
+        text: "HTML stands for ____ Markup Language",
+        choices: [
+            "Hotswap",
+            "Hypertext",
+            "Helper",
+            "Hypermedia"
+        ],
+        chosen: "",
+        answer: "Hypertext"
+    },
+    {
+        text: "1 === '1' evaluates to",
+        choices: [
+            "true",
+            "false"
+        ],
+        chosen: "",
+        answer: "false"
+    },
+    {
+        text: "In a React Redux application, the entire state tree is contained in the",
+        choices: [
+            "consumer",
+            "action",
+            "reducer",
+            "store"
+        ],
+        chosen: "",
+        answer: "store"
+    },
+    {
+        text: "The Django framework is based on",
+        choices: [
+            "Java",
+            "PHP",
+            "Python",
+            "None of the above"
+        ],
+        chosen: "",
+        answer: "Python"
+    }
+];
+let currentQuestion = 0;
+const questionNavigation = document.querySelector(".questions");
+const questionSection = document.querySelector(".question");
+const choicesSection = document.querySelector(".choices");
+
+const setAnswer = answer => {
+    questions[currentQuestion].chosen = answer;
+}
+
+const changeSelectedButton = (previous, selected) => {
+    const buttons = document.getElementsByClassName("navigation-button");
+
+    buttons[previous].classList.remove("selected");
+    buttons[selected].classList.add("selected");
+};
+
+const changeQuestion = value => {
+    questionSection.innerHTML = '';
+    choicesSection.innerHTML = '';
+
+    const previousQuestion = currentQuestion;
+
+    currentQuestion += value;
+    if(currentQuestion < 0) { currentQuestion = 0; }
+    if(currentQuestion > questions.length - 1) { currentQuestion = questions.length - 1; }
+
+    changeSelectedButton(previousQuestion, currentQuestion);
+
+    renderQuestion(questions[currentQuestion].text);
+    renderChoices(questions[currentQuestion].choices);
+}
+
+const navigateToQuestion = index => {
+    if(index !== currentQuestion) {
+        changeSelectedButton(currentQuestion, index);
+
+        questionSection.innerHTML = '';
+        choicesSection.innerHTML = '';
+
+        currentQuestion = index;
+
+        renderQuestion(questions[currentQuestion].text);
+        renderChoices(questions[currentQuestion].choices);
+    }
+};
+
+const renderQuestion = question => {
+    questionSection.innerHTML = `<p class="md">Question ${currentQuestion + 1}<p> ${question}`;
+}
+
+const renderChoices = choices => {
+    choices.forEach(choice => {
+        let checked = "";
+        if(choice === questions[currentQuestion].chosen) { checked = "checked"; };
+        choicesSection.innerHTML += `<label><input type='radio' name='choice' ${checked}
+        onChange='setAnswer("${choice}")' value='${choice}' style='vertical-align:baseline; margin-right: 5px'>
+            ${choice}</label><br><br>`;
+    });
+}
+
+const renderQuestions = () => {
+    questions.forEach((question, i) => {
+        const button = document.createElement("button");
+        button.innerText = i + 1;
+        button.addEventListener('click', () => navigateToQuestion(i));
+        button.classList.add("navigation-button");
+        if(i === 0) { button.classList.add("selected"); };
+        questionNavigation.append(button);
+    });
+};
+
+const gradeQuiz = () => {
+    const testingSection = document.querySelector('.testing-section');
+    const gradeSection = document.querySelector('.grade-section');
+    const grade = document.querySelector('.grade');
+
+    testingSection.style.display = "none";
+    gradeSection.style.display = "block";
+
+    let score = 0;
+    questions.forEach(question => {
+        if(question.chosen === question.answer) {
+            score++;
+        }
+    });
+
+    grade.innerHTML = `<h2 style='text-decoration:underline; margin: 40px 0'>Results</h2>`
+    grade.innerHTML += `You answered ${score} out of ${questions.length} questions correctly`;
+
+    grade.innerHTML += `<h2 style='text-decoration:underline; margin: 40px 0'>Review</h2>
+        <p style='margin-bottom: 40px'>Below are all the questions and their correct answers.`;
+    questions.forEach(question => {
+        grade.innerHTML += `<p style='font-size:20px'>${question.text}</p>
+            <p style='margin-left: 20px'>${question.answer}
+            <i class='fas fa-check' style='color:green'></i></p>`;
+
+        if(question.chosen === "") {
+            grade.innerHTML += `<p style='margin-left: 20px'>No answer chosen
+                <i class="fas fa-times" style="color:red"></i></p>`;
+        }
+        else if(question.chosen !== question.answer) {
+            grade.innerHTML += `<p style='margin-left: 20px'>${question.chosen}
+            <i class="fas fa-times" style="color:red"></i></p>`;
+        }
+
+        grade.innerHTML += `<hr style = 'margin-bottom: 20px'>`;
+    });
+};
+
+const gradeButton = document.querySelector('.grade-button');
+gradeButton.addEventListener('click', () => {
+    gradeQuiz();
+});
+
+renderQuestions();
+renderQuestion(questions[currentQuestion].text);
+renderChoices(questions[currentQuestion].choices);
