@@ -58,46 +58,41 @@ let currentQuestion = 0;
 const questionNavigation = document.querySelector(".questions");
 const questionSection = document.querySelector(".question");
 const choicesSection = document.querySelector(".choices");
+const gradeButton = document.querySelector('.grade-button');
+gradeButton.addEventListener('click', () => {
+    gradeQuiz();
+});
 
-const setAnswer = answer => {
-    questions[currentQuestion].chosen = answer;
-}
+const init = () => {
+    currentQuestion = 0;
+    questions.forEach(question => {
+        question.chosen = "";
+    });
 
-const changeSelectedButton = (previous, selected) => {
-    const buttons = document.getElementsByClassName("navigation-button");
+    questionNavigation.innerHTML = "";
+    questionSection.innerHTML = "";
+    choicesSection.innerHTML = "";
 
-    buttons[previous].classList.remove("selected");
-    buttons[selected].classList.add("selected");
-};
+    const testingSection = document.querySelector('.testing-section');
+    const gradeSection = document.querySelector('.grade-section');
 
-const changeQuestion = value => {
-    questionSection.innerHTML = '';
-    choicesSection.innerHTML = '';
+    testingSection.style.display = "block";
+    gradeSection.style.display = "none";
 
-    const previousQuestion = currentQuestion;
-
-    currentQuestion += value;
-    if(currentQuestion < 0) { currentQuestion = 0; }
-    if(currentQuestion > questions.length - 1) { currentQuestion = questions.length - 1; }
-
-    changeSelectedButton(previousQuestion, currentQuestion);
-
+    renderNavigationMenu();
     renderQuestion(questions[currentQuestion].text);
     renderChoices(questions[currentQuestion].choices);
 }
 
-const navigateToQuestion = index => {
-    if(index !== currentQuestion) {
-        changeSelectedButton(currentQuestion, index);
-
-        questionSection.innerHTML = '';
-        choicesSection.innerHTML = '';
-
-        currentQuestion = index;
-
-        renderQuestion(questions[currentQuestion].text);
-        renderChoices(questions[currentQuestion].choices);
-    }
+const renderNavigationMenu = () => {
+    questions.forEach((question, i) => {
+        const button = document.createElement("button");
+        button.innerText = i + 1;
+        button.addEventListener('click', () => navigateToQuestion(i));
+        button.classList.add("navigation-button");
+        if(i === 0) { button.classList.add("selected"); };
+        questionNavigation.append(button);
+    });
 };
 
 const renderQuestion = question => {
@@ -114,15 +109,48 @@ const renderChoices = choices => {
     });
 }
 
-const renderQuestions = () => {
-    questions.forEach((question, i) => {
-        const button = document.createElement("button");
-        button.innerText = i + 1;
-        button.addEventListener('click', () => navigateToQuestion(i));
-        button.classList.add("navigation-button");
-        if(i === 0) { button.classList.add("selected"); };
-        questionNavigation.append(button);
-    });
+const setAnswer = answer => {
+    questions[currentQuestion].chosen = answer;
+}
+
+// highlight the current question in the navigation menu
+const changeSelectedButton = (previous, selected) => {
+    const buttons = document.getElementsByClassName("navigation-button");
+
+    buttons[previous].classList.remove("selected");
+    buttons[selected].classList.add("selected");
+};
+
+// handle previous and next buttons
+const changeQuestion = value => {
+    questionSection.innerHTML = '';
+    choicesSection.innerHTML = '';
+
+    const previousQuestion = currentQuestion;
+
+    currentQuestion += value;
+    if(currentQuestion < 0) { currentQuestion = 0; }
+    if(currentQuestion > questions.length - 1) { currentQuestion = questions.length - 1; }
+
+    changeSelectedButton(previousQuestion, currentQuestion);
+
+    renderQuestion(questions[currentQuestion].text);
+    renderChoices(questions[currentQuestion].choices);
+}
+
+// handle navigation menu buttons
+const navigateToQuestion = index => {
+    if(index !== currentQuestion) {
+        changeSelectedButton(currentQuestion, index);
+
+        questionSection.innerHTML = '';
+        choicesSection.innerHTML = '';
+
+        currentQuestion = index;
+
+        renderQuestion(questions[currentQuestion].text);
+        renderChoices(questions[currentQuestion].choices);
+    }
 };
 
 const gradeQuiz = () => {
@@ -145,6 +173,7 @@ const gradeQuiz = () => {
 
     grade.innerHTML += `<h2 style='text-decoration:underline; margin: 40px 0'>Review</h2>
         <p style='margin-bottom: 40px'>Below are all the questions and their correct answers.`;
+    
     questions.forEach(question => {
         grade.innerHTML += `<p style='font-size:20px'>${question.text}</p>
             <p style='margin-left: 20px'>${question.answer}
@@ -161,13 +190,8 @@ const gradeQuiz = () => {
 
         grade.innerHTML += `<hr style = 'margin-bottom: 20px'>`;
     });
+
+    grade.innerHTML += `<button class='retry-button' onclick='init()'>Retry</button>`;
 };
 
-const gradeButton = document.querySelector('.grade-button');
-gradeButton.addEventListener('click', () => {
-    gradeQuiz();
-});
-
-renderQuestions();
-renderQuestion(questions[currentQuestion].text);
-renderChoices(questions[currentQuestion].choices);
+init();

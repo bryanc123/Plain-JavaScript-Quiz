@@ -10,13 +10,19 @@
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+}
+
 body {
+    display: flex;
+    flex-direction: column;
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
 }
 
 main {
-    min-height: 1vh;
+    flex: 1 0 auto;
     line-height: 1em;
 }
 
@@ -97,23 +103,42 @@ nav a:hover {
     background-color: orange;
 }
 
+.previous-next-section button:hover {
+    background-color: #FF8C00;
+}
+
 .previous-next {
     padding: 20px;
 }
 
 /* Grade Button */
 
-.grade-button-section button {
+.grade-button {
     background-color: #EBECF0;
     border-radius: 20px;
     font-size: 24px;
     padding: 15px;
 }
 
+.grade-button:hover {
+    background-color: #BEBEBE;
+}
+
 /* Grading Section */
 
 .grade-section {
     display: none;
+}
+
+.retry-button {
+    background-color: #EBECF0;
+    border-radius: 20px;
+    font-size: 24px;
+    padding: 15px;
+}
+
+.retry-button:hover {
+    background: #BEBEBE;
 }
 
 button {
@@ -139,6 +164,7 @@ footer {
     background-color: var(--bg-primary);
     color: white;
     padding: 20px;
+    flex-shrink: 1;
 }
 
 footer li {
