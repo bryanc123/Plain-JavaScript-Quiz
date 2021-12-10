@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 :root {
-    --bg-primary: black;
+    --bg-primary: #F5F5F5;
 }
 
 * {
-    padding: 0;
-    margin: 0;
     box-sizing: border-box;
+    color: black;
+    margin: 0;
+    padding: 0;
 }
 
 html, body {
@@ -26,9 +27,8 @@ main {
     line-height: 1em;
 }
 
-a {
-    text-decoration: none;
-    color: white;
+p {
+    margin-bottom: 20px;
 }
 
 /* Header */
@@ -46,6 +46,10 @@ header {
     font-size: 32px;
     padding: 20px;
     max-width: 1100px;
+}
+
+.fa-pencil-alt {
+    margin-right: 10px;
 }
 
 nav a {
@@ -67,15 +71,17 @@ nav a:hover {
     padding: 5px 20px;
     background-color: white;
     border: 1px solid black;
-    border-bottom: 4px solid blue;
+    border-bottom: 2px solid black;
 }
 
 .question-navigation .selected {
-    background-color: orange;;
+    background-color: green;;
+    border-bottom: 2px solid #8BC34A;
+    color: white;
 }
 
 .question-navigation button:hover {
-    border-bottom: 4px solid orange;
+    border-bottom: 2px solid #8BC34A;
 }
 
 /* Question Section */
@@ -98,8 +104,13 @@ nav a:hover {
 
 /* Previous and Next Buttons */
 
+.previous-next {
+    display: flex;
+    justify-content: space-between;
+}
+
 .previous-next-section button {
-    padding: 10px 40px;
+    padding: 10px 20px;
     background-color: orange;
 }
 
@@ -114,14 +125,15 @@ nav a:hover {
 /* Grade Button */
 
 .grade-button {
-    background-color: #EBECF0;
+    background-color: green;
     border-radius: 20px;
+    color: white;
     font-size: 24px;
     padding: 15px;
 }
-
 .grade-button:hover {
-    background-color: #BEBEBE;
+    background-color: #8BC34A;
+    color: black;
 }
 
 /* Grading Section */
@@ -131,14 +143,16 @@ nav a:hover {
 }
 
 .retry-button {
-    background-color: #EBECF0;
+    background-color: green;
     border-radius: 20px;
+    color: white;
     font-size: 24px;
     padding: 15px;
 }
 
 .retry-button:hover {
-    background: #BEBEBE;
+    background: #8BC34A;
+    color: black;
 }
 
 button {
@@ -147,8 +161,8 @@ button {
 }
 
 .container {
-    max-width: 1100px;
     height: 100%;
+    max-width: 1100px;
     padding: 20px;
 }
 
@@ -156,8 +170,11 @@ button {
     font-size: 36px;
 }
 
+/* Footer */
+
 footer {
-    font-size: 14px;
+    display: flex;
+    flex-direction: column;
     left: 0;
     bottom: 0; 
     width: 100%;
@@ -167,27 +184,33 @@ footer {
     flex-shrink: 1;
 }
 
-footer li {
-    list-style-type: none;
+footer h2 {
+    margin-bottom: 10px;
 }
 
-li {
+footer a {
+    color: black;
+    text-decoration: none;
+}
+footer a:hover {
+    color: rgba(0, 0, 0, 0.8);
+}
+
+footer li {
+    list-style-type: none;
     margin: 0px 0px 8px 0px;
 }
 
-/* Other */
-
-p {
+.footer-section {
     margin-bottom: 20px;
 }
 
-.flex {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+@media only screen and (min-width: 650px) {
 
-.md {
-    font-size: 16px;
-    text-decoration: underline;
+    /* Footer */
+
+    footer {
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }

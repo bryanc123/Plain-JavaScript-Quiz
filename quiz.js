@@ -1,6 +1,6 @@
 const questions = [
     {
-        text: "8 % 3 =",
+        text: "8 % 3 = ____",
         choices: [
             "2",
             "3",
@@ -23,7 +23,7 @@ const questions = [
         answer: "Hypertext"
     },
     {
-        text: "1 === '1' evaluates to",
+        text: "1 === '1' evaluates to ____",
         choices: [
             "true",
             "false"
@@ -32,7 +32,7 @@ const questions = [
         answer: "false"
     },
     {
-        text: "In a React Redux application, the entire state tree is contained in the",
+        text: "In a React Redux application, the entire state tree is contained in the ____",
         choices: [
             "consumer",
             "action",
@@ -43,7 +43,7 @@ const questions = [
         answer: "store"
     },
     {
-        text: "The Django framework is based on",
+        text: "The Django framework is based on ____",
         choices: [
             "Java",
             "PHP",
