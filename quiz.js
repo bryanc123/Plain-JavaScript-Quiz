@@ -32,7 +32,7 @@ const questions = [
         answer: "false"
     },
     {
-        text: "In a React Redux application, the entire state tree is contained in the ____",
+        text: "In a Redux application, the entire state tree is contained in the ____",
         choices: [
             "consumer",
             "action",
