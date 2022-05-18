@@ -59,6 +59,7 @@ const questionNavigation = document.querySelector(".questions");
 const questionSection = document.querySelector(".question");
 const choicesSection = document.querySelector(".choices");
 const gradeButton = document.querySelector('.grade-button');
+
 gradeButton.addEventListener('click', () => {
     gradeQuiz();
 });
@@ -73,8 +74,8 @@ const init = () => {
     questionSection.innerHTML = "";
     choicesSection.innerHTML = "";
 
-    const testingSection = document.querySelector('.testing-section');
-    const gradeSection = document.querySelector('.grade-section');
+    const testingSection = document.querySelector('.testing__section');
+    const gradeSection = document.querySelector('.grade__section');
 
     testingSection.style.display = "block";
     gradeSection.style.display = "none";
@@ -154,8 +155,8 @@ const navigateToQuestion = index => {
 };
 
 const gradeQuiz = () => {
-    const testingSection = document.querySelector('.testing-section');
-    const gradeSection = document.querySelector('.grade-section');
+    const testingSection = document.querySelector('.testing__section');
+    const gradeSection = document.querySelector('.grade__section');
     const grade = document.querySelector('.grade');
 
     testingSection.style.display = "none";
@@ -168,13 +169,13 @@ const gradeQuiz = () => {
         }
     });
 
-    grade.innerHTML = `<h2 style='text-decoration:underline; margin: 40px 0'>Results</h2>`
-    grade.innerHTML += `You answered ${score} out of ${questions.length} questions correctly`;
+    grade.innerHTML = `<h2 class="results-heading">Results</h2>`
+    grade.innerHTML += `<p>You answered ${score} out of ${questions.length} questions correctly</p>`;
 
-    grade.innerHTML += `<h2 style='text-decoration:underline; margin: 40px 0'>Review</h2>
-        <p style='margin-bottom: 40px'>Below are all the questions and their correct answers.`;
+    grade.innerHTML += `<h2 class="review-heading">Review</h2>
+        <p>Below are all the questions and their correct answers</p>`;
     
-    questions.forEach(question => {
+    questions.forEach((question, index) => {
         grade.innerHTML += `<p style='font-size:20px'>${question.text}</p>
             <p style='margin-left: 20px'>${question.answer}
             <i class='fas fa-check' style='color:green'></i></p>`;
@@ -188,7 +189,9 @@ const gradeQuiz = () => {
             <i class="fas fa-times" style="color:red"></i></p>`;
         }
 
-        grade.innerHTML += `<hr style = 'margin-bottom: 20px'>`;
+        if(index !== questions.length - 1) {
+            grade.innerHTML += `<hr style = 'margin-bottom: 20px'>`;
+        }
     });
 
     grade.innerHTML += `<button class='retry-button' onclick='init()'>Retry</button>`;

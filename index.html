@@ -10,92 +10,94 @@
 </head>
 <body>
     <header>
-        <div class="header">
+        <div class="header__container">
             <i class="fas fa-pencil-alt"></i>Quiz
         </div>
     </header>
     <main>
-        <section class="testing-section">
-            <section class="question-navigation">
-                <div class="questions"><p>Jump to different question:</p></div>
-            </section>
-            <section class="question-section">
-                <div class="question"></div>
-            </section>
-            <section class="choices-section">
-                <div class="choices"></div>
-            </section>
-            <section class="previous-next-section">
-                <div class="previous-next">
-                    <button onClick="changeQuestion(-1)">&lt;</button>
-                    <button onClick="changeQuestion(1)">&gt;</button>
-                </div>
-            </section>
-            <hr>
-            <section class="grade-button-section">
-                <div class="container">
-                    Click to grade quiz: 
-                    <button class = "grade-button">Finish</button>
-                </div>
-            </section>
-        </section class="testing-section">
-        <section class="grade-section">
-            <div class="grade container">
-                Grade
+        <section class="testing__section">
+            <div class="testing__container">
+                <section class="question-navigation">
+                    <div class="questions"><p>Jump to different question:</p></div>
+                </section>
+                <section class="question-section">
+                    <div class="question"></div>
+                </section>
+                <section class="choices-section">
+                    <div class="choices"></div>
+                </section>
+                <section class="previous-next-section">
+                    <div class="previous-next">
+                        <button onClick="changeQuestion(-1)">&lt;</button>
+                        <button onClick="changeQuestion(1)">&gt;</button>
+                    </div>
+                </section>
+                <hr>
+                <section class="grade-button__section">
+                    <div class="grade-button__container">
+                        <span>Click to grade quiz:</span>
+                        <button class = "grade-button">Finish</button>
+                    </div>
+                </section>
             </div>
+        </section>
+        <section class="grade__section">
+            <div class="grade container"></div>
         </section>
     </main>
     <footer>
-        <div class="footer-section">
-            <h2>Links</h2>
-            <ul>
-                <li>
-                    <a href="https://github.com/bryanc123/Plain-JavaScript-Quiz">
-                        Source Code
-                    </a>
-                </li>
-                <li>
-                    <a href="https://bryanc123.github.io/Personal-Website/">
-                        Personal Portfolio
-                    </a>
-                </li>
-                <li>
-                    <a href="https://github.com/bryanc123">
-                        GitHub
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h2>Other Projects</h2>
-            <ul>
-                <li>
-                    <a href="https://bryanc123.github.io/Mobile-First-Design/">
-                        Mobile First Website
-                    </a>
-                </li>
-                <li>
-                    <a href="https://bryanc123.github.io/Employee-Records-Angular/">
-                        Employee Records
-                    </a>
-                </li>
-                <li>
-                    <a href="https://bryanc123.github.io/Users-and-Posts/">
-                        Users and Posts
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h2>Contact</h2>
-            <ul>
-                <li>
-                    Phone Number: 1-805-608-0066
-                </li>
-                <li>
-                    Email: cayanan.bryanau@gmail.com
-                </li>
-            </ul>
+        <div class="footer__container">
+            <div class="footer__section">
+                <h2>Links</h2>
+                <ul>
+                    <li>
+                        <a href="https://github.com/bryanc123/Plain-JavaScript-Quiz">
+                            Source Code
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://bryanc123.github.io/Personal-Website/">
+                            Personal Portfolio
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/bryanc123">
+                            GitHub
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer__section">
+                <h2>Other Projects</h2>
+                <ul>
+                    <li>
+                        <a href="https://bryanc123.github.io/Flower-Shop/">
+                            Flower Shop
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://bryanc123.github.io/Employee-Records-Angular/">
+                            Employee Records
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://bryanc123.github.io/Quiz-Game/">
+                            Quiz Game
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer__section">
+                <h2>Contact</h2>
+                <ul>
+                    <li>
+                        Phone Number: 1-805-608-0066
+                    </li>
+                    <li>
+                        Email: cayanan.bryanau@gmail.com
+                    </li>
+                </ul>
+            </div>
         </div>
     </footer>
     <script src="./quiz.js"></script>

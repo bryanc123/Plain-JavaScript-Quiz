@@ -31,21 +31,25 @@ p {
     margin-bottom: 20px;
 }
 
-/* Header */
-
-nav a {
-    padding: 10px;
+hr {
+    margin: 20px 0;
 }
 
+/* Header */
+
 header {
-    color: white;
     background-color: var(--bg-primary);
 }
 
-.header {
+.header__container {
     font-size: 32px;
+    margin: 0 auto;
+    max-width: 1300px;
     padding: 20px;
-    max-width: 1100px;
+}
+
+nav a {
+    padding: 10px;
 }
 
 .fa-pencil-alt {
@@ -59,6 +63,17 @@ nav a {
 nav a:hover {
     border-bottom: 2px solid #2A9DF4;
     color: #2A9DF4;
+}
+
+/* Testing */
+
+.testing {
+    min-height: 80vh;
+}
+
+.testing__container {
+    margin: 0 auto;
+    max-width: 1300px;
 }
 
 /* Question Navigation */
@@ -124,6 +139,11 @@ nav a:hover {
 
 /* Grade Button */
 
+.grade-button__section {
+    font-size: 1.2em;
+    margin: 40px 20px;
+}
+
 .grade-button {
     background-color: green;
     border-radius: 20px;
@@ -138,8 +158,19 @@ nav a:hover {
 
 /* Grading Section */
 
-.grade-section {
+.grade__section {
     display: none;
+}
+.grade__section .results-heading {
+    margin: 20px 0;
+    text-decoration: underline;
+}
+.grade__section .review-heading {
+    margin: 40px 0 20px 0;
+    text-decoration: underline;
+}
+.grade__section p {
+    line-height: 1.6;
 }
 
 .retry-button {
@@ -147,9 +178,9 @@ nav a:hover {
     border-radius: 20px;
     color: white;
     font-size: 24px;
+    margin: 20px 0;
     padding: 15px;
 }
-
 .retry-button:hover {
     background: #8BC34A;
     color: black;
@@ -162,7 +193,8 @@ button {
 
 .container {
     height: 100%;
-    max-width: 1100px;
+    margin: 0 auto;
+    max-width: 1300px;
     padding: 20px;
 }
 
@@ -173,21 +205,11 @@ button {
 /* Footer */
 
 footer {
-    display: flex;
-    flex-direction: column;
-    left: 0;
-    bottom: 0; 
-    width: 100%;
     background-color: var(--bg-primary);
-    color: white;
-    padding: 20px;
-    flex-shrink: 1;
 }
-
 footer h2 {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
-
 footer a {
     color: black;
     text-decoration: none;
@@ -195,22 +217,40 @@ footer a {
 footer a:hover {
     color: rgba(0, 0, 0, 0.8);
 }
-
 footer li {
     list-style-type: none;
-    margin: 0px 0px 8px 0px;
+    margin-bottom: 15px;
 }
 
-.footer-section {
+.footer__container {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 1300px;
+    padding: 20px;
+}
+
+.footer__section {
     margin-bottom: 20px;
 }
 
 @media only screen and (min-width: 650px) {
 
+    /* Grade Button */
+
+    .grade-button__section {
+        font-size: 1.6em;
+    }
+
     /* Footer */
 
-    footer {
+    .footer__container {
         flex-direction: row;
         justify-content: space-between;
+    }
+
+    .footer__section {
+        margin: 0;
     }
 }
