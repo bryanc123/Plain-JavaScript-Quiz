@@ -83,38 +83,41 @@ nav a:hover {
 }
 
 .question-navigation button {
-    padding: 5px 20px;
     background-color: white;
     border: 1px solid black;
     border-bottom: 2px solid black;
+    font-size: 16px;
+    padding: 5px 20px;
 }
-
 .question-navigation .selected {
     background-color: green;;
     border-bottom: 2px solid #8BC34A;
     color: white;
 }
-
 .question-navigation button:hover {
     border-bottom: 2px solid #8BC34A;
+    cursor: pointer;
 }
 
 /* Question Section */
 
 .question {
-    padding: 20px;
-    margin: 20px 0;
+    background-color: #EBECF0;
     font-size: 24px;
     line-height: 1em;
-    background-color: #EBECF0;
+    margin: 20px 0;
+    padding: 20px;
+}
+.question p {
+    line-height: 1.6em;
 }
 
 /* Choices Section */
 
 .choices {
-    padding: 20px 40px;
     font-size: 20px;
     height: 180px;
+    padding: 20px 40px;
 }
 
 /* Previous and Next Buttons */
@@ -122,19 +125,20 @@ nav a:hover {
 .previous-next {
     display: flex;
     justify-content: space-between;
-}
-
-.previous-next-section button {
-    padding: 10px 20px;
-    background-color: orange;
-}
-
-.previous-next-section button:hover {
-    background-color: #FF8C00;
-}
-
-.previous-next {
     padding: 20px;
+}
+
+.previous-next button {
+    background-color: transparent;
+    border: none;
+    color: orange;
+    font-size: 3em;
+}
+.previous-next button:hover {
+    cursor: pointer;
+}
+.previous-next button:hover i {
+    color: gray;
 }
 
 /* Grade Button */
@@ -184,11 +188,6 @@ nav a:hover {
 .retry-button:hover {
     background: #8BC34A;
     color: black;
-}
-
-button {
-    font-size: 16px;
-    cursor: pointer;
 }
 
 .container {
