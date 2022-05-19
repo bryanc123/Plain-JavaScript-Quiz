@@ -106,7 +106,7 @@ const renderChoices = choices => {
         if(choice === questions[currentQuestion].chosen) { checked = "checked"; };
         choicesSection.innerHTML += `<label><input type='radio' name='choice' ${checked}
         onChange='setAnswer("${choice}")' value='${choice}' style='vertical-align:baseline; margin-right: 5px'>
-            ${choice}</label><br><br>`;
+            ${choice}</label>`;
     });
 }
 

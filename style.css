@@ -115,19 +115,27 @@ nav a:hover {
 /* Choices Section */
 
 .choices {
+    display: flex;
+    flex-direction: column;
     font-size: 20px;
     height: 180px;
     padding: 20px 40px;
 }
+.choices input[type="radio"] {
+    margin-bottom: 30px;
+}
 
 /* Previous and Next Buttons */
+
+.previous-next-section {
+    margin: 20px 0;
+}
 
 .previous-next {
     display: flex;
     justify-content: space-between;
     padding: 20px;
 }
-
 .previous-next button {
     background-color: transparent;
     border: none;
@@ -158,6 +166,7 @@ nav a:hover {
 .grade-button:hover {
     background-color: #8BC34A;
     color: black;
+    cursor: pointer;
 }
 
 /* Grading Section */
@@ -188,6 +197,7 @@ nav a:hover {
 .retry-button:hover {
     background: #8BC34A;
     color: black;
+    cursor: pointer;
 }
 
 .container {
