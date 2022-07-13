@@ -42,7 +42,7 @@ header {
 }
 
 .header__container {
-    font-size: 32px;
+    font-size: 20px;
     margin: 0 auto;
     max-width: 1300px;
     padding: 20px;
@@ -65,9 +65,39 @@ nav a:hover {
     color: #2A9DF4;
 }
 
+/* Splash Screen */
+
+.splash-screen__section {
+    align-items: center;
+    display: flex;
+    min-height: 80vh;
+}
+
+.splash-screen__container {
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto;
+    max-width: 300px;
+    width: 100%;
+}
+.splash-screen__container button {
+    background-color: #D8D8D8;
+    border: 2px solid #BBBBBB;
+    font-size: 20px;
+    margin-bottom: 40px;
+    padding: 20px;
+    width: 100%;
+}
+.splash-screen__container button:hover {
+    background-color: #ECECEC;
+    border: 2px solid #D8D8D8;
+    cursor: pointer;
+}
+
 /* Testing */
 
-.testing {
+.testing__section {
+    display: none;
     min-height: 80vh;
 }
 
@@ -173,6 +203,7 @@ nav a:hover {
 
 .grade__section {
     display: none;
+    font-size: 1.2rem;
 }
 .grade__section .results-heading {
     margin: 20px 0;
@@ -200,6 +231,20 @@ nav a:hover {
     cursor: pointer;
 }
 
+.grading-back-to-homepage__button {
+    background-color: #D8D8D8;
+    border: 2px solid #BBBBBB;
+    border-radius: 20px;
+    font-size: 20px;
+    margin-left: 20px;
+    padding: 20px;
+}
+.grading-back-to-homepage__button:hover {
+    background-color: #ECECEC;
+    border: 2px solid #D8D8D8;
+    cursor: pointer;
+}
+
 .container {
     height: 100%;
     margin: 0 auto;
@@ -209,6 +254,138 @@ nav a:hover {
 
 .home h1 {
     font-size: 36px;
+}
+
+/* Add Question Section */
+
+.add-question__section {
+    display: none;
+    min-height: 80vh;
+    padding: 20px;
+}
+
+.add-question__success {
+    background-color: #D5E9D5;
+    display: none;
+    margin: 0 auto 20px auto;
+    max-width: 800px;
+    padding: 20px;
+}
+.add-question__success p {
+    margin: 0;
+}
+
+.add-question__errors {
+    background-color: #FFDDDD;
+    display: none;
+    margin: 0 auto 20px auto;
+    max-width: 800px;
+    padding: 20px;
+}
+.add-question__errors h3 {
+    margin-bottom: 20px;
+}
+
+.add-question__back-button {
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.back-to-homepage__button {
+    background-color: #D8D8D8;
+    border: 2px solid #BBBBBB;
+    font-size: 20px;
+    padding: 20px;
+}
+.back-to-homepage__button:hover {
+    background-color: #ECECEC;
+    border: 2px solid #D8D8D8;
+    cursor: pointer;
+}
+
+.add-question__container {
+    background-color: var(--bg-primary);
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 20px;
+}
+.add-question__container h3 {
+    margin-bottom: 20px;
+}
+.add-question__container input[type=text] {
+    flex-grow: 1;
+    font-size: 16px;
+    padding: 10px;
+}
+.add-question__container input[type=radio] {
+    margin-right: 10px;
+}
+
+.add-question__container-section {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+.add-question__container-section div {
+    align-items: center;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.add-question__button {
+    background-color: green;
+    border-radius: 20px;
+    color: white;
+    font-size: 24px;
+    max-width: 300px;
+    padding: 15px;
+}
+.add-question__button:hover {
+    background-color: #8BC34A;
+    color: black;
+    cursor: pointer;
+}
+
+/* Instructions Section */
+
+.instructions__section {
+    display: none;
+    min-height: 80vh;
+}
+
+.instructions__container {
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 20px;
+}
+.instructions__container div {
+    margin-bottom: 40px;
+}
+.instructions__container h3 {
+    margin-bottom: 20px;
+}
+.instructions__container p {
+    line-height: 20px;
+}
+.instructions__container ul {
+    margin-left: 30px;
+}
+.instructions__container ul li {
+    margin-bottom: 10px;
+}
+.instructions__container button {
+    background-color: #D8D8D8;
+    border: 2px solid #BBBBBB;
+    font-size: 20px;
+    margin-bottom: 40px;
+    padding: 20px;
+}
+.instructions__container button:hover {
+    background-color: #ECECEC;
+    border: 2px solid #D8D8D8;
+    cursor: pointer;
 }
 
 /* Footer */
@@ -246,13 +423,51 @@ footer li {
 
 @media only screen and (min-width: 650px) {
 
+    /* Splash Screen */
+
+    .splash-screen__container {
+        margin: 40px auto;
+    }
+    .splash-screen__container button {
+        font-size: 28px;
+    }
+
     /* Grade Button */
 
     .grade-button__section {
         font-size: 1.6em;
     }
 
+    /* Add Question Section */
+
+    .add-question__section h3 {
+        font-size: 1.5rem;
+    }
+    .add-question__section p {
+        font-size: 1.2rem;
+    }
+
+    /* Instructions Section */
+
+    .instructions__section {
+        font-size: 1.5rem;
+    }
+
+    .instructions__container p {
+        line-height: 40px;
+    }
+    .instructions__container ul {
+        margin-left: 40px;
+    }
+    .instructions__container ul li {
+        margin-bottom: 20px;
+    }
+
     /* Footer */
+
+    .footer__section {
+        font-size: 1.2rem;
+    }
 
     .footer__container {
         flex-direction: row;
