@@ -203,13 +203,11 @@ const navigateToQuestion = index => {
 };
 
 const gradeQuiz = () => {
-    const testingSection = document.querySelector(".testing__section");
-    const gradeSection = document.querySelector(".grade__section");
     const grade = document.querySelector(".grade");
 
-    testingSection.style.display = "none";
-    gradeSection.style.display = "block";
+    renderScreen(".grade__section", "block");
 
+    // calculate score
     let score = 0;
     questions.forEach(question => {
         if(question.chosen === question.answer) {
@@ -217,9 +215,14 @@ const gradeQuiz = () => {
         }
     });
 
-    grade.innerHTML = `<h2 class="results-heading">Results</h2>`
-    grade.innerHTML += `<p>You answered ${score} out of ${questions.length} questions correctly</p>`;
+    // display score
+    grade.innerHTML += `<p class="score">Score: ${score} / ${questions.length}</p>`;
 
+    if(score === questions.length) {
+        grade.innerHTML += `<p class="score">Perfect</p>`
+    }
+    
+    // display correct answers
     grade.innerHTML += `<h2 class="review-heading">Review</h2>
         <p>Below are all the questions and their correct answers</p>`;
     
@@ -242,11 +245,18 @@ const gradeQuiz = () => {
         }
     });
 
+    // retry button
     grade.innerHTML += `<button class='retry-button'>Retry</button><button class='grading-back-to-homepage__button'>Homepage</button>`;
     document.querySelector(".retry-button").addEventListener("click", () => {
+        grade.innerHTML = "";
         init();
     });
+
+    // back to homepage button
     document.querySelector(".grading-back-to-homepage__button").addEventListener("click", () => {
+        grade.innerHTML = "";
         renderScreen(".splash-screen__section", "flex");
     });
+
+    window.scrollTo(0, 0);
 };

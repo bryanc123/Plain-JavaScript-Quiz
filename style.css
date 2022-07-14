@@ -205,16 +205,17 @@ nav a:hover {
     display: none;
     font-size: 1.2rem;
 }
-.grade__section .results-heading {
-    margin: 20px 0;
-    text-decoration: underline;
-}
-.grade__section .review-heading {
-    margin: 40px 0 20px 0;
-    text-decoration: underline;
-}
 .grade__section p {
     line-height: 1.6;
+}
+
+.score {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.review-heading {
+    margin: 40px 0 20px 0;
 }
 
 .retry-button {
