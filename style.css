@@ -311,8 +311,15 @@ nav a:hover {
     max-width: 800px;
     padding: 20px;
 }
+.add-question__container h2 {
+    font-size: 2rem;
+    line-height: 40px;
+}
 .add-question__container h3 {
     margin-bottom: 20px;
+}
+.add-question__container p {
+    line-height: 20px;
 }
 .add-question__container input[type=text] {
     flex-grow: 1;
