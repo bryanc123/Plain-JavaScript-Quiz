@@ -1,5 +1,6 @@
 import {
     questions,
+    editQuestion,
     checkQuestion,
     addQuestion,
     currentQuestion,
@@ -19,7 +20,13 @@ const renderScreen = (screen, display) => {
 }
 
 const startQuizButton = document.querySelector(".start-quiz__button");
+const viewQuestionsButton = document.querySelector(".view-questions__button");
+const questionsBackButton = document.querySelector(".questions__back-button");
+const questionsContainer = document.querySelector(".questions__container");
+const editQuestionBackButton = document.querySelector(".edit-question__back-button");
+const editQuestionButton = document.querySelector(".edit-question__button");
 const addQuestionPageButton = document.querySelector(".add-question-page__button");
+const addQuestionButton = document.querySelector(".add-question__button");
 const addQuestionBackButton = document.querySelector(".add-question__back-button");
 const instructionsButton = document.querySelector(".instructions__button");
 const instructionsBackButton = document.querySelector(".instructions__back-button");
@@ -27,21 +34,131 @@ const questionNavigation = document.querySelector(".questions");
 const questionSection = document.querySelector(".question");
 const choicesSection = document.querySelector(".choices");
 const gradeButton = document.querySelector(".grade-button");
-const addQuestionButton = document.querySelector(".add-question__button");
+const grade = document.querySelector(".grade");
 
 startQuizButton.addEventListener("click", () => {
     init();
 });
 
+const buildQuestionsPage = () => {
+    questionsContainer.innerHTML = "";
+
+    let questionsContainerString = "<h2>Questions and Answers</h2>";
+    for(let i = 0; i < questions.length; i++) {
+        questionsContainerString += `<div class="questions__entry"><p class="questions__entry-question">${questions[i].text}</p>`;
+        
+        for(let j = 0; j < questions[i].choices.length; j++) {
+            questionsContainerString += `<p class="questions__entry-choice">${questions[i].choices[j]}`;
+
+            if(questions[i].choices[j] === questions[i].answer) {
+                questionsContainerString += ` <i class='fas fa-check' style='color:green'></i>`;
+            }
+            
+            questionsContainerString += `</p>`;
+        }
+
+        questionsContainerString += `<button class="edit-question-page__button">Edit Question</button>`;
+
+        questionsContainerString += `</div>`;
+    }
+
+    questionsContainer.innerHTML += questionsContainerString;
+
+    const editQuestionPageButtons = document.getElementsByClassName("edit-question-page__button");
+
+    for(let i = 0; i < editQuestionPageButtons.length; i++) {
+        editQuestionPageButtons[i].addEventListener("click", () => {
+            questionToEdit = questions[i].text;
+
+            renderScreen(".edit-question__section", "block");
+
+            // fill in inputs with current values of question and choices to be updated
+
+            document.querySelector(".edit-question").value = questions[i].text;
+            
+            const editChoiceTextboxes = document.getElementsByClassName("edit-choice");
+            for(let j = 0; j < questions[i].choices.length; j++) {
+                editChoiceTextboxes[j].value = questions[i].choices[j];
+                if(questions[i].choices[j] === questions[i].answer) {
+                    document.getElementsByName("edit-answer")[j].checked = true;
+                }
+            }
+        });
+    }
+}
+
+viewQuestionsButton.addEventListener("click", () => {
+    buildQuestionsPage();
+
+    renderScreen(".questions__section", "block");
+});
+
+let questionToEdit = "";
+
+questionsBackButton.addEventListener("click", () => {
+    renderScreen(".splash-screen__section", "flex");
+});
+
+editQuestionBackButton.addEventListener("click", () => {
+    buildQuestionsPage();
+
+    renderScreen(".questions__section", "block");
+});
+
+editQuestionButton.addEventListener("click", () => {
+    document.querySelector(".edit-question__success").style.display = "none";
+    document.querySelector(".edit-question__errors").style.display = "none";
+
+    let choices = [];
+    let choiceTextboxes = document.getElementsByClassName("edit-choice");
+    for(let i = 0; i < choiceTextboxes.length; i++) {
+        choices.push(choiceTextboxes[i].value);
+    }
+
+    let answer = "";
+    let choiceRadioButtons = document.getElementsByName("edit-answer");
+    for(let i = 0; i < choiceRadioButtons.length; i++) {
+        if(choiceRadioButtons[i].checked === true) {
+            answer = choiceTextboxes[i].value;
+        }
+    }
+
+    const errors = checkQuestion({
+        text: document.querySelector(".edit-question").value,
+        choices,
+        chosen: "",
+        answer
+    });
+    if(errors.length === 0) {
+        editQuestion(questionToEdit, {
+            text: document.querySelector(".edit-question").value,
+            choices,
+            answer
+        });
+        document.querySelector(".edit-question__success").innerHTML = "<p>Question has been updated</p>";
+        document.querySelector(".edit-question__success").style.display = "block";
+    } else {
+        let errorText = "";
+        for(let i = 0; i < errors.length; i++) {
+            errorText += `<p>${errors[i]}</p>`;
+        }
+        document.querySelector(".edit-question__errors-list").innerHTML = errorText;
+
+        document.querySelector(".edit-question__errors").style.display = "block";
+    }
+
+    window.scrollTo(0, 0);
+});
+
 addQuestionPageButton.addEventListener("click", () => {
     renderScreen(".add-question__section", "block");
-})
+});
 
 addQuestionBackButton.addEventListener("click", () => {
     document.querySelector(".add-question__success").style.display = "none";
     document.querySelector(".add-question__errors").style.display = "none";
     renderScreen(".splash-screen__section", "flex");
-})
+});
 
 instructionsButton.addEventListener("click", () => {
     renderScreen(".instructions__section", "block");
@@ -118,7 +235,7 @@ const init = () => {
     renderNavigationMenu();
     renderQuestion(questions[currentQuestion].text);
     renderChoices(questions[currentQuestion].choices);
-}
+};
 
 const renderNavigationMenu = () => {
     questions.forEach((question, i) => {
@@ -132,8 +249,8 @@ const renderNavigationMenu = () => {
 };
 
 const renderQuestion = question => {
-    questionSection.innerHTML = `<p class="md">Question ${currentQuestion + 1}<p> ${question}`;
-}
+    questionSection.innerHTML = `<p class="question-number">Question ${currentQuestion + 1}<p> ${question}`;
+};
 
 const renderChoices = choices => {
     choices.forEach(choice => {
@@ -185,7 +302,7 @@ const changeQuestion = (value) => {
 
     renderQuestion(questions[currentQuestion].text);
     renderChoices(questions[currentQuestion].choices);
-}
+};
 
 // handle navigation menu buttons
 const navigateToQuestion = index => {
@@ -203,7 +320,7 @@ const navigateToQuestion = index => {
 };
 
 const gradeQuiz = () => {
-    const grade = document.querySelector(".grade");
+    grade.innerHTML = "";
 
     renderScreen(".grade__section", "block");
 
@@ -248,13 +365,11 @@ const gradeQuiz = () => {
     // retry button
     grade.innerHTML += `<button class='retry-button'>Retry</button><button class='grading-back-to-homepage__button'>Homepage</button>`;
     document.querySelector(".retry-button").addEventListener("click", () => {
-        grade.innerHTML = "";
         init();
     });
 
     // back to homepage button
     document.querySelector(".grading-back-to-homepage__button").addEventListener("click", () => {
-        grade.innerHTML = "";
         renderScreen(".splash-screen__section", "flex");
     });
 

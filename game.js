@@ -25,7 +25,9 @@ let questions = [
         text: "1 === '1' evaluates to ____",
         choices: [
             "true",
-            "false"
+            "false",
+            "1",
+            "None of the above"
         ],
         chosen: "",
         answer: "false"
@@ -90,6 +92,23 @@ const addQuestion = (newQuestion) => {
     questions.push(newQuestion);
 };
 
+const editQuestion = (questionToEdit, { text, choices, answer}) => {
+    questions = questions.map(question => {
+        if(question.text === questionToEdit) {
+            return {
+                text,
+                choices,
+                chosen: "",
+                answer
+            }
+        }
+
+        return question;
+    });
+
+    console.log(questions);
+};
+
 let currentQuestion = 0;
 
 const setCurrentQuestion = (newQuestion) => {
@@ -98,10 +117,11 @@ const setCurrentQuestion = (newQuestion) => {
 
 const setAnswer = (answer) => {
     questions[currentQuestion].chosen = answer;
-}
+};
 
 export {
     questions,
+    editQuestion,
     checkQuestion,
     addQuestion,
     currentQuestion,

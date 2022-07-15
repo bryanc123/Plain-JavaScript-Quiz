@@ -18,6 +18,7 @@
         <section class="splash-screen__section">
             <div class="splash-screen__container">
                 <button class="start-quiz__button">Start Quiz</button>
+                <button class="view-questions__button">Review and Edit Quiz</button>
                 <button class="add-question-page__button">Add Questions</button>
                 <button class="instructions__button">Instructions</button>
             </div>
@@ -51,6 +52,12 @@
         <section class="grade__section">
             <div class="grade container"></div>
         </section>
+        <section class="questions__section">
+            <div class="questions__back-button">
+                <button class="back-to-homepage__button">Back to Home Page</button>
+            </div>
+            <div class="questions__container"></div>
+        </section>
         <section class="add-question__section">
             <div class="add-question__back-button">
                 <button class="back-to-homepage__button">Back to Home Page</button>
@@ -62,18 +69,18 @@
             </div>
             <div class="add-question__container">
                 <div class="add-question__container-section">
-                    <h2>Add a Custom Question</h2>
+                    <h2>Add a Question</h2>
+                    <p>Once you are finished, click <strong>Add Question</strong></p>
                 </div>
                 <div class="add-question__container-section">
                     <h3>Question</h3>
-                    <p>Enter your custom question to add to the quiz</p>
+                    <p>Enter a question to add to the quiz</p>
                     <input type="text" class="new-question">
                 </div>
                 <div class="add-question__container-section">
                     <h3>Answers</h3>
-                    <p>Provide 4 possible answers for your custom question</p>
+                    <p>Provide 4 possible answers for your question</p>
                     <p>Indicate the correct answer using the radio buttons</p>
-                    <p>Once you are finished, click <strong>Add Question</strong></p>
                     <div>
                         <input type="radio" name="new-answer" value="0" checked>
                         <input type="text" class="new-choice">
@@ -96,8 +103,54 @@
                 </div>
             </div>
         </section>
+        <section class="edit-question__section">
+            <div class="edit-question__back-button">
+                <button class="back-to-homepage__button">Back to Questions List</button>
+            </div>
+            <div class="edit-question__success"></div>
+            <div class="edit-question__errors">
+                <h3>Error(s)</h3>
+                <div class="edit-question__errors-list"></div>
+            </div>
+            <div class="edit-question__container">
+                <div class="edit-question__container-section">
+                    <h2>Edit a Question</h2>
+                    <p>Once you are finished, click <strong>Save Changes</strong></p>
+                </div>
+                <div class="edit-question__container-section">
+                    <h3>Question</h3>
+                    <p>Edit the selected question</p>
+                    <input type="text" class="edit-question">
+                </div>
+                <div class="edit-question__container-section">
+                    <h3>Answers</h3>
+                    <p>Provide 4 possible answers for this question</p>
+                    <p>Indicate the correct answer using the radio buttons</p>
+                    <div>
+                        <input type="radio" name="edit-answer" value="0">
+                        <input type="text" class="edit-choice">
+                    </div>
+                    <div>
+                        <input type="radio" name="edit-answer" value="1">
+                        <input type="text" class="edit-choice">
+                    </div>
+                    <div>
+                        <input type="radio" name="edit-answer" value="2">
+                        <input type="text" class="edit-choice">
+                    </div>
+                    <div>
+                        <input type="radio" name="edit-answer" value="3">
+                        <input type="text" class="edit-choice">
+                    </div>
+                </div>
+                <div class="edit-question__container-section">
+                    <button class="edit-question__button">Save Changes</button>
+                </div>
+            </div>
+        </section>
         <section class="instructions__section">
             <div class="instructions__container">
+                <h2>Instructions</h2>
                 <div>
                     <h3>Quiz</h3>
                     <p>Answer each question and then click <strong>Finish</strong> once you are done to grade the quiz.</p>
@@ -111,6 +164,11 @@
                         <li>4 possible answers are required</li>
                         <li>Provided choices must not contain duplicates</li>
                     </ul>
+                </div>
+                <div>
+                    <h3>Review and Edit Quiz</h3>
+                    <p>You may review the questions and answers in the quiz.</p>
+                    <p>Each question can be edited, and the rules used for adding questions still apply.</p>
                 </div>
                 <button class="instructions__back-button">
                     Back to Home Page

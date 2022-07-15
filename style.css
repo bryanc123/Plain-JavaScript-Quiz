@@ -142,6 +142,11 @@ nav a:hover {
     line-height: 1.6em;
 }
 
+.question-number {
+    color: #00008B;
+    font-size: 1.4rem;
+}
+
 /* Choices Section */
 
 .choices {
@@ -257,6 +262,66 @@ nav a:hover {
     font-size: 36px;
 }
 
+/* Questions Section */
+
+.questions__section {
+    display: none;
+    min-height: 80vh;
+    padding: 20px;
+}
+
+.questions__back-button {
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.questions__container {
+    background-color: var(--bg-primary);
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 800px;
+}
+.questions__container h2 {
+    font-size: 1.8rem;
+    line-height: 40px;
+    padding: 40px 20px;
+}
+.questions__container > :nth-child(even) {
+    background-color: #FDFDFD;
+}
+
+.questions__entry {
+    margin-bottom: 20px;
+    padding: 20px 20px 40px 20px;
+}
+.questions__entry p {
+    line-height: 30px;
+}
+
+.questions__entry-question {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.questions__entry-choice {
+    font-size: 1.2rem;
+}
+
+.edit-question-page__button {
+    background-color: green;
+    border-radius: 20px;
+    color: white;
+    font-size: 24px;
+    max-width: 300px;
+    padding: 15px;
+}
+.edit-question-page__button:hover {
+    background-color: #8BC34A;
+    color: black;
+    cursor: pointer;
+}
+
 /* Add Question Section */
 
 .add-question__section {
@@ -308,6 +373,7 @@ nav a:hover {
     background-color: var(--bg-primary);
     display: flex;
     flex-direction: column;
+    font-size: 1.2rem;
     margin: 0 auto;
     max-width: 800px;
     padding: 20px;
@@ -315,12 +381,14 @@ nav a:hover {
 .add-question__container h2 {
     font-size: 2rem;
     line-height: 40px;
+    margin-bottom: 20px;
 }
 .add-question__container h3 {
+    color: #00008B;
     margin-bottom: 20px;
 }
 .add-question__container p {
-    line-height: 20px;
+    line-height: 30px;
 }
 .add-question__container input[type=text] {
     flex-grow: 1;
@@ -356,6 +424,108 @@ nav a:hover {
     cursor: pointer;
 }
 
+/* Edit Question Section */
+
+.edit-question__section {
+    display: none;
+    min-height: 80vh;
+    padding: 20px;
+}
+
+.edit-question__success {
+    background-color: #D5E9D5;
+    display: none;
+    margin: 0 auto 20px auto;
+    max-width: 800px;
+    padding: 20px;
+}
+.edit-question__success p {
+    margin: 0;
+}
+
+.edit-question__errors {
+    background-color: #FFDDDD;
+    display: none;
+    margin: 0 auto 20px auto;
+    max-width: 800px;
+    padding: 20px;
+}
+.edit-question__errors h3 {
+    margin-bottom: 20px;
+}
+
+.edit-question__back-button {
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.back-to-homepage__button {
+    background-color: #D8D8D8;
+    border: 2px solid #BBBBBB;
+    font-size: 20px;
+    padding: 20px;
+}
+.back-to-homepage__button:hover {
+    background-color: #ECECEC;
+    border: 2px solid #D8D8D8;
+    cursor: pointer;
+}
+
+.edit-question__container {
+    background-color: var(--bg-primary);
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 20px;
+}
+.edit-question__container h2 {
+    font-size: 2rem;
+    line-height: 40px;
+    margin-bottom: 20px;
+}
+.edit-question__container h3 {
+    color: #00008B;
+    margin-bottom: 20px;
+}
+.edit-question__container p {
+    font-size: 1.2rem;
+    line-height: 30px;
+}
+.edit-question__container input[type=text] {
+    flex-grow: 1;
+    font-size: 16px;
+    padding: 10px;
+}
+.edit-question__container input[type=radio] {
+    margin-right: 10px;
+}
+
+.edit-question__container-section {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+.edit-question__container-section div {
+    align-items: center;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.edit-question__button {
+    background-color: green;
+    border-radius: 20px;
+    color: white;
+    font-size: 24px;
+    max-width: 300px;
+    padding: 15px;
+}
+.edit-question__button:hover {
+    background-color: #8BC34A;
+    color: black;
+    cursor: pointer;
+}
+
 /* Instructions Section */
 
 .instructions__section {
@@ -366,18 +536,29 @@ nav a:hover {
 .instructions__container {
     margin: 20px auto;
     max-width: 800px;
-    padding: 20px;
 }
 .instructions__container div {
+    background-color: var(--bg-primary);
     margin-bottom: 40px;
+    padding: 20px;
+}
+.instructions__container h2 {
+    font-size: 1.8rem;
+    margin-bottom: 40px;
+    padding: 0 20px;
 }
 .instructions__container h3 {
+    color: #00008B;
+    font-size: 1.5rem;
     margin-bottom: 20px;
 }
 .instructions__container p {
-    line-height: 20px;
+    font-size: 1.2rem;
+    line-height: 30px;
 }
 .instructions__container ul {
+    font-size: 1.2rem;
+    line-height: 30px;
     margin-left: 30px;
 }
 .instructions__container ul li {
@@ -394,6 +575,10 @@ nav a:hover {
     background-color: #ECECEC;
     border: 2px solid #D8D8D8;
     cursor: pointer;
+}
+
+.instructions__back-button {
+    margin: 0 20px;
 }
 
 /* Footer */
@@ -452,6 +637,15 @@ footer li {
         font-size: 1.5rem;
     }
     .add-question__section p {
+        font-size: 1.2rem;
+    }
+
+    /* Edit Question Section */
+
+    .edit-question__section h3 {
+        font-size: 1.5rem;
+    }
+    .edit-question__section p {
         font-size: 1.2rem;
     }
 
