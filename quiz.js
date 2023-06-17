@@ -28,6 +28,9 @@ const editQuestionButton = document.querySelector(".edit-question__button");
 const addQuestionPageButton = document.querySelector(".add-question-page__button");
 const addQuestionButton = document.querySelector(".add-question__button");
 const addQuestionBackButton = document.querySelector(".add-question__back-button");
+const flashcardsButton = document.querySelector(".flashcards__button");
+const flashcardsBackButton = document.querySelector(".flashcards__back-button");
+const flashcardButton = document.querySelector(".flashcard");
 const instructionsButton = document.querySelector(".instructions__button");
 const instructionsBackButton = document.querySelector(".instructions__back-button");
 const questionNavigation = document.querySelector(".questions");
@@ -159,6 +162,46 @@ addQuestionBackButton.addEventListener("click", () => {
     document.querySelector(".add-question__errors").style.display = "none";
     renderScreen(".splash-screen__section", "flex");
 });
+
+let flashcardIndex = 0;
+const renderFlashcard = () => {
+    document.querySelector(".flashcard__front").innerText = questions[flashcardIndex].text;
+    document.querySelector(".flashcard__back").innerText = questions[flashcardIndex].answer;
+};
+
+flashcardsButton.addEventListener("click", () => {
+    renderScreen(".flashcards__section", "block");
+    renderFlashcard();
+});
+
+const flashcardPrevious = document.querySelector(".flashcard__previous");
+const flashcardNext = document.querySelector(".flashcard__next");
+
+let front = true;
+flashcardButton.addEventListener("click", () => {
+    if(front) {
+        document.querySelector(".flashcard__inner").style.transform = "rotateY(-180deg)";
+        front = false;
+    } else {
+        document.querySelector(".flashcard__inner").style.transform = "rotateY(0deg)";
+        front = true;
+    }
+});
+
+flashcardPrevious.addEventListener("click", () => {
+    if(flashcardIndex >= 0) flashcardIndex--;
+    renderFlashcard();
+});
+
+flashcardNext.addEventListener("click", () => {
+    if(flashcardIndex < questions.length - 1) flashcardIndex++;
+    renderFlashcard();
+});
+
+flashcardsBackButton.addEventListener("click", () => {
+    renderScreen(".splash-screen__section", "flex");
+});
+
 
 instructionsButton.addEventListener("click", () => {
     renderScreen(".instructions__section", "block");

@@ -174,7 +174,6 @@ nav a:hover {
 .previous-next button {
     background-color: transparent;
     border: none;
-    color: orange;
     font-size: 3em;
 }
 .previous-next button:hover {
@@ -524,6 +523,101 @@ nav a:hover {
     background-color: #8BC34A;
     color: black;
     cursor: pointer;
+}
+
+/* Flashcards Section */
+
+.flashcards__section {
+    display: none;
+    min-height: 80vh;
+}
+
+.flashcards__container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    line-height: 2rem;
+    margin: 0 auto;
+    max-width: 1300px;
+    padding: 40px 0;
+}
+
+.flashcards__back-button {
+    margin: 0 20px;
+    max-width: 800px;
+    padding: 20px;
+    width: 100%;
+}
+
+.flashcards__description {
+    align-self: left;
+    margin: 0 20px;
+}
+
+.flashcard {
+    cursor: pointer;
+    font-size: 1.5rem;
+    height: 200px;
+    max-width: 600px;
+    perspective: 1000px;
+    width: 90%;
+}
+
+.flashcard__inner {
+    height: 100%;
+    position: relative;
+    text-align: center;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+    width: 100%;
+}
+
+.flashcard__front, .flashcard__back {
+    align-items: center;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    padding: 20px;
+    position: absolute;
+    width: 100%;
+}
+
+.flashcard__front {
+    background-color: #FDFD96;
+}
+
+.flashcard__back {
+    background-color: #00FFFF;
+    transform: rotateY(180deg);
+}
+
+.flashcard__instruction {
+    font-style: italic;
+}
+
+.flashcard__navigation {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    max-width: 800px;
+    padding: 20px;
+    width: 100%;
+}
+
+.flashcard__previous, .flashcard__next {
+    background-color: transparent;
+    border: 1px solid transparent;
+    font-size: 3em;
+}
+.flashcard__previous:hover, .flashcard__next:hover {
+    cursor: pointer;
+}
+.flashcard__previous:hover i, .flashcard__next:hover i {
+    color: gray;
 }
 
 /* Instructions Section */
